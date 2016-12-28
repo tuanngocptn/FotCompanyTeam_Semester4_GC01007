@@ -45,7 +45,7 @@
                 }
 
                 .paging-nav,
-                
+
                 #tableData {
                     /*width: 400px;*/
                     /*margin: 0 auto;*/
@@ -134,7 +134,7 @@
                                     </s:iterator>       
                                     <td colspan="4"></td>
                                     <td>       
-                                        <s:submit cssClass="btn btn-warning col-sm-4 col-sm-offset-1" value="Sửa" method="execute" disabled="true" id="btnUpdateLstWorker" onclick="setUrlWorker(%{quantityWorker},%{codeOrder})"/>
+                                        <s:submit cssClass="btn btn-warning col-sm-4 col-sm-offset-1" value="Sửa" method="execute" disabled="true" id="btnUpdateLstWorker" onclick="setUrlWorker(%{lstWorkerLeisrure.size()},%{codeOrder})"/>
                                         <a class="btn btn-warning col-sm-4 col-sm-offset-2" href="Admin.jsp">Đóng</a>
                                     </td>
                                 </table>
@@ -326,9 +326,13 @@
                 document.getElementById("btnUpdateLstWorker").disabled = true;
         }
         function setUrlWorker(size, codeOrder) {
+            console.log(size);
+            console.log(codeOrder);
             var str = "";
             for (var i = 1; i < size + 1; i++) {
-                str = str + document.getElementsByName("cbWorker" + i)[0].id + "+";
+                var boo = document.getElementById(document.getElementsByName("cbWorker" + i)[0].id).checked;
+                if (boo)
+                    str = str + document.getElementsByName("cbWorker" + i)[0].id + "+";
             }
             document.getElementById("editForm").action = "doUpdateLstWorker?codeOrderDo=" + codeOrder + "&lstCbWorkerDo=" + str;
         }
@@ -344,6 +348,6 @@
             $('#tableHome').paging({limit: 10});
             $('#tblCareer').paging({limit: 10});
         });
-        
+
     </script>
 </s:else>

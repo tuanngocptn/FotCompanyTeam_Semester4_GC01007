@@ -104,16 +104,16 @@ SELECT * FROM tblOrder
 SELECT * FROM tblComment
 
 
-DELETE FROM tblOrder WHERE _codeOrder = 7
+--DELETE FROM tblOrder WHERE _codeOrder = 7
 
-DELETE FROM tblCareer WHERE _codeCareer = 'adm, adm'
+--DELETE FROM tblCareer WHERE _codeCareer = 'adm, adm'
 
-UPDATE tblCareer SET _nameCareer = 'aaaa' WHERE _codeCareer = 'adma'
+--UPDATE tblCareer SET _nameCareer = 'aaaa' WHERE _codeCareer = 'adma'
 
-UPDATE tblOrder SET _lstWorkers = 'xd01#xd02' WHERE _codeOrder = 2;
+--UPDATE tblOrder SET _lstWorkers = 'xd01#xd02' WHERE _codeOrder = 2;
 
 
-DROP TABLE tblWorker
-DROP TABLE tblOrder
-DROP TABLE tblComment
-DROP TABLE tblCareer
+--DROP TABLE tblWorker
+--DROP TABLE tblOrder
+--DROP TABLE tblComment
+--DROP TABLE tblCareer

@@ -122,7 +122,7 @@
                         </div>
                         <s:form action="#" id="editForm" method="POST" cssClass="form-inline col-md-4 col-md-offset-7">
                             <input name="sum" value="0" readonly="true" class="form-control col-md-3" style="color: white; background-color:rgba(0,0,0,0.7);"/>
-                            <s:submit cssClass="btn btn-warning col-md-3 col-md-offset-1" value="Sửa" method="execute" disabled="true" id="btnUpdateLstWorker" onclick="setUrlWorkerCus(%{quantityWorker},%{codeOrder})"/>
+                            <s:submit cssClass="btn btn-warning col-md-3 col-md-offset-1" value="Sửa" method="execute" disabled="true" id="btnUpdateLstWorker" onclick="setUrlWorkerCus(%{lstWorkerLeisrure.size()},%{codeOrder})"/>
                         </s:form>
                     </s:if>
 
@@ -174,7 +174,9 @@
             console.log("abc");
             var str = "";
             for (var i = 1; i < size + 1; i++) {
-                str = str + document.getElementsByName("cbWorker" + i)[0].id + "+";
+                var boo = document.getElementById(document.getElementsByName("cbWorker" + i)[0].id).checked;
+                if (boo)
+                    str = str + document.getElementsByName("cbWorker" + i)[0].id + "+";
             }
             document.getElementById("editForm").action = "doUpdateLstWorkerCus?codeOrderDo=" + codeOrder + "&lstCbWorkerDo=" + str;
             console.log(document.getElementById("editForm").action);
