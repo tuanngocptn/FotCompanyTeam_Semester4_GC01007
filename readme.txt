@@ -1,1 +1,1 @@
-Luu project vao D:\hoctap\SEM4 de co the chay dc :3
+Lưu project vào "D:\hoctap\SEM4\" để có thể chạy được :3
