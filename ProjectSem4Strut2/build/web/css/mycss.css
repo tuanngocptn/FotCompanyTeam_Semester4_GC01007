@@ -1,0 +1,189 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 11, 2016, 5:01:24 PM
+    Author     : Panda
+*/
+
+html,body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#back-first{   
+    background-color: white;
+    /*background-image: url("../images/constructionPPE.jpg");*/
+    background-size: cover;
+    /*background-attachment: fixed;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bodyDiv{
+    background-color: rgba(0,0,0,0.2);
+    min-height: 100%;
+    height: auto;
+}
+
+#topBar ul li{
+    color: white;
+    display: inline;
+    border: 1px solid rgba(0, 0, 0, 0);
+    height: 30px;
+    font-size: 14px;
+    padding-top: 4px;
+}
+#topBar ul{
+    float: right;
+}
+#topBar{
+    border-radius: 5px;
+    height: 50px;
+    background-color: rgba(0,0,0,0.7);
+}
+#topBar ul li:hover{
+    border-radius: 5px;
+    background-color: #FAFAFA;
+    color: rgba(0,0,0,1);
+    transition-duration: 0.8s;
+}
+#logo{
+    padding-top: 12px;
+    color: #FFFFFF;
+    float: left;
+    font-size: 18px;
+}
+
+.content{
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: rgba(0,0,0,0.7);
+}
+#checkHangg, #dangNhap{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#datGach div label{
+    color: white;
+}
+
+#datGach{
+    height: 600px;
+}
+
+#dangNhap, #checkHang{
+    text-align: right;
+}
+
+
+
+@font-face {
+    font-family: helveticaneue;
+    src: url("../fonts/Helvetica/helveticaneuecondensedbold.ttf");
+}
+
+.h1-text{
+    font-size: 60px;
+    font-family: helveticaneue;
+    text-shadow:  3px 3px 5px rgba(0,0,0,1);
+}
+
+.h2-text{
+    font-family: helveticaneue;
+    text-shadow:  3px 3px 5px rgba(0,0,0,1);
+}
+
+.h3-text{
+    font-family: helveticaneue;
+    text-shadow:  3px 3px 5px rgba(0,0,0,1);
+}
+
+.font-helveticaneue{
+    font-family: helveticaneue;
+}
+
+
+.table{
+    border-radius: 5px;
+}
+
+.content-cus{
+    margin-top: 15px;
+}
+
+div.content ul li a{
+    color:white;
+}
+
+
+div.content ul li.active > a,
+div.content ul li.active > a:hover,
+div.content ul li.active > a:focus{
+    color:black;
+}
+
+
+div#menu1 table input{
+    width: 100px;
+}
+
+.table_ViewAdmin input{
+    width: 100px;
+}
+
+
+#banner-top-top p{
+    margin: 20px 0px 20px 0px;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+
+#banner-top-top{
+    width: 30%;
+}
+
+#banner-top{
+    padding-top: 200px;
+    color:white;
+    width: 100%;
+    height: 622px
+
+}
+
+.back-second{
+    padding: 0px;
+    background-color: white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.show_in1,.show_in2,.show_in3,.show_in4{
+    height: 80px; 
+    width: 481px; 
+    background-color: rgba(0,0,0,0.8); 
+    border-radius: 5px;
+}
+
+.show_in1 a,.show_in2 a,.show_in3 a,.show_in4 a{
+    margin-top: 25px
+}
+
+.img_congViec1, .img_congViec2, .img_congViec3, .img_congViec4{
+    display: none;
+    height: 250px; 
+    width: 481px;
+    border-radius: 5px; 
+    background-color: rgba(0,0,0,0.8); 
+    padding-top: 85px;
+}
+
+/*.img_congViec:hover div{
+    display: block;
+}*/

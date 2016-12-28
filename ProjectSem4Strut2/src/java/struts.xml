@@ -1,0 +1,174 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.ui.theme" value="simple"/>
+    <include file="example.xml"/>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <action name="login" class="app.LoginActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="worker">Worker.jsp</result>
+            <result name="failed">other/Error.jsp</result>
+        </action>   
+        
+        <action name="logout" class="app.LogoutActionSupport">
+            <result name="index">index.jsp</result>
+        </action>     
+        
+        <action name="adminView" class="app.admin.ViewAdminPageActionSupport">
+            <result name="admin">Admin.jsp</result>
+        </action>
+        
+        <action name="adminFind" class="app.admin.AdminFindActionSupport" method="execute">
+            <result name="admin">Admin.jsp</result>
+        </action>
+        
+        <action name="getLstCareer" class="app.CareerActionSupport">
+            <result name="index">index.jsp</result>
+        </action>
+        
+        <action name="addOrder" class="app.OrderActionSupport">
+            <result name="index">index.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="addCareer" class="app.admin.career.AddCareerActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="deleteCareer" class="app.admin.career.DeleteCareerActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="updateCareer" class="app.admin.career.UpdateCareerActionSupport">
+            <result name="updateCareer">update/UpdateCareer.jsp</result>
+        </action>
+        
+        <action name="doUpdateCareer" class="app.admin.career.DoUpdateCareerActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="addWorker" class="app.admin.worker.AddWorkerActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="deleteWorker" class="app.admin.worker.DeleteWorkerActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="updateWorker" class="app.admin.worker.UpdateWorkerActionSupport">
+            <result name="updateWorker">update/UpdateWorker.jsp</result>
+        </action>
+        
+        <action name="doUpdateWorker" class="app.admin.worker.DoUpdateWorkerActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="deleteComment" class="app.admin.comment.DeleteCommentActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="showHideComment" class="app.admin.comment.ShowHideActionSupport">
+            <result name="admin">Admin.jsp</result>
+        </action>
+        
+        <action name="deleteOrder" class="app.admin.order.DeleteOrderActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+            
+        <action name="editOrderLstWorker" class="app.admin.order.EditLstWorkerActionSupport">
+            <result name="admin">Admin.jsp</result>
+        </action>
+        
+        <action name="doUpdateLstWorker" class="app.admin.order.DoUpdateLstWorkerActionSupport">
+            <result name="admin">Admin.jsp</result>
+        </action>
+        
+        <action name="deleteOrderLstWorker" class="app.admin.order.DeleteOrderLstWorkerActionSupport">
+            <result name="admin">Admin.jsp</result>
+        </action>
+        
+        <action name="viewOrder" class="app.admin.order.ViewOrderActionSupport">
+            <result name="viewOrderAdmin">update/ViewOrderAdmin.jsp</result>
+        </action>
+        
+        <action name="doUpdateOrder" method="execute" class="app.admin.order.DoUpdateOrderActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="setStatus" class="app.admin.order.SetStatusActionSupport">
+            <result name="admin">Admin.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="workerView" class="app.worker.ViewWorkerActionSupport">
+            <result name="worker">Worker.jsp</result>
+        </action>
+        
+        <action name="setIndexOrder" class="app.worker.SetIndexOrderActionSupport">
+            <result name="worker">Worker.jsp</result>
+        </action>
+        
+        <action name="workerSetStatus" class="app.worker.SetDoneActionSupport">
+            <result name="worker">Worker.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="checkHang" class="app.customer.ViewCustomerActionSupport">
+            <result name="customer">Customer.jsp</result>
+        </action>
+        
+        <action name="editOrderLstWorkerCus" class="app.customer.EditOrderLstWorkerCusActionSupport">
+            <result name="customer">Customer.jsp</result>
+        </action>
+        
+        <action name="deleteOrderLstWorkerCus" class="app.customer.DeleteOrderLstWorkerCusActionSupport">
+            <result name="customer">Customer.jsp</result>
+        </action>
+        
+        <action name="setIndexOrderCus" class="app.customer.SetIndexOrderCusActionSupport">
+            <result name="customer">Customer.jsp</result>
+        </action>
+        
+        <action name="doUpdateLstWorkerCus" class="app.customer.DoUpdateLstWorkerCusActionSupport">
+            <result name="index">index.jsp</result>
+        </action>
+        
+        <action name="deleteOrderCus" class="app.customer.DeleteOrderActionCusSupport">
+            <result name="index">index.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="updateProfile" class="app.worker.UpdateWorkerProfileActionSupport">
+            <result name="profile">update/Profile.jsp</result>
+        </action>
+        
+        <action name="doUpdateProfile" class="app.worker.DoUpdateProfileActionSupport">
+            <result name="index">index.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+               
+        <action name="doUploadImg" class="app.worker.DoUploadImgActionSupport">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="index">index.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+    </package>
+</struts>
