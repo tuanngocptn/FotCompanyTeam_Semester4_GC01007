@@ -38,7 +38,7 @@
                         <input type="file" name="file" style="display: inline-block; color: white"/>
                         <s:submit cssStyle="display: inline-block" cssClass="btn btn-warning"/>
                     </s:form>
-                        <img style="padding: 10px; border-radius: 15px" src="<s:url value="%{#worker.getAvatar()}"/>" alt="Smiley face" height="auto" width="100%">
+                    <img style="padding: 10px; border-radius: 15px" src="<s:url value="%{#worker.getAvatar()}"/>" alt="Smiley face" height="auto" width="100%">
                 </div>
 
                 <div class="col-md-8 form_frofile" style="padding-top: 40px">
@@ -99,7 +99,13 @@
                             </div>
                         </div>
                         <div class="form-group col-md-6" style="display: inline-block">
-                            <s:submit cssClass="col-md-8 col-md-offset-4 btn btn-warning" value="Cập Nhật Thay Đổi" method="execute"/>
+                            <s:label value="Link Avartar" cssClass="control-label col-sm-4"/>
+                            <div class="col-sm-8">
+                                <s:textfield cssClass="form-control" name="avatar" value="%{#worker.getAvatar()}" readonly="true" required="required" /><br>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12" style="display: inline-block">
+                            <s:submit  cssClass="col-md-4 col-md-offset-7 btn btn-warning" value="Cập Nhật Thay Đổi" method="execute"/>
                         </div>
                     </s:form>
                 </div>

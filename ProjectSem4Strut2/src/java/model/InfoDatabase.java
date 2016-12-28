@@ -10,8 +10,8 @@ package model;
  * @author admin
  */
 public class InfoDatabase {
-    public static String url = "jdbc:sqlserver://DESKTOP-PDVAFDQ\\SQLEXPRESS:1433;DatabaseName=PROJECT_SEM4";
-//    public static String url = "jdbc:sqlserver://PC0016\\SQLEXPRESS:1433;DatabaseName=PROJECT_SEM4";
+//    public static String url = "jdbc:sqlserver://DESKTOP-PDVAFDQ\\SQLEXPRESS:1433;DatabaseName=PROJECT_SEM4";
+    public static String url = "jdbc:sqlserver://PC0016\\SQLEXPRESS:1433;DatabaseName=PROJECT_SEM4";
     public static String id = "sa";
-    public static String pass = "sa";
+    public static String pass = "123";
 }
