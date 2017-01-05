@@ -13,6 +13,7 @@ public class CareerForJson {
 
     private String code;
     private String name;
+    private String slogan;
     private Long price;
     private String image;
     private String sortText;
@@ -22,9 +23,10 @@ public class CareerForJson {
     public CareerForJson() {
     }
 
-    public CareerForJson(String code, String name, Long price, String image, String sortText, String longText, String show) {
+    public CareerForJson(String code, String name, String slogan, Long price, String image, String sortText, String longText, String show) {
         this.code = code;
         this.name = name;
+        this.slogan = slogan;
         this.price = price;
         this.image = image;
         this.sortText = sortText;
@@ -46,6 +48,14 @@ public class CareerForJson {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSlogan() {
+        return slogan;
+    }
+
+    public void setSlogan(String slogan) {
+        this.slogan = slogan;
     }
 
     public Long getPrice() {
@@ -90,8 +100,9 @@ public class CareerForJson {
 
     @Override
     public String toString() {
-        return "CareerForJson{" + "code=" + code + ", name=" + name + ", price=" + price + ", image=" + image + ", sortText=" + sortText + ", longText=" + longText + ", show=" + show + '}';
+        return "CareerForJson{" + "code=" + code + ", name=" + name + ", slogan=" + slogan + ", price=" + price + ", image=" + image + ", sortText=" + sortText + ", longText=" + longText + ", show=" + show + '}';
     }
 
+   
    
 }
