@@ -6,6 +6,7 @@
 package app;
 
 import com.opensymphony.xwork2.ActionSupport;
+import controller.Mail;
 import entity.Worker;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -130,6 +131,9 @@ public class OrderActionSupport extends ActionSupport {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date startDate = df.parse(startDateString),endDate = df.parse(endDateString);
         if (db.addNewOrder(nameCustomer, emailCustomer, phone, location, codeCareer, quantityWorker, startDate, endDate, "wait", lstWorker)) {
+            String subject = "Đặt gạch tại Fọt căm pà ly thành công";
+            String  content = "<p>Dear: "+nameCustomer+"<br><br> chúng tôi đã nhận được thông tin về đơn đặt hàng của bạn như sau</p><table border='1' ><tr><th>Mã Đơn</th><th>Tên Khách Hàng</th><th>Số Điện Thoại</th><th>Địa Điểm</th><th>Mã CV</th><th>Tổng CN</th><th>Ngày Bắt Đầu</th><th>Ngày Kết Thúc</th><th>Status</th><th>Đơn Giá</th></tr><tr><td></td><td>"+nameCustomer+"</td><td>"+phone+"</td><td>"+location+"</td><td>"+codeCareer+"</td><td>"+quantityWorker+"</td><td>"+startDate+"</td><td>"+endDate+"</td><td></td><td></table><p>cảm ơn bạn đã sử dụng dịch vụ của chúng tôi bạn có thể kiểm tra tiến độ công việc của bạn tại link sau: <br> http://localhost:8084/ProjectSem4Strut2/checkHang?emailCustomer="+emailCustomer+" <br><br>Thanks and Best Regards!</p>";
+            Mail m = new Mail(subject, content, emailCustomer);
             return "index";
         }
         return "error";

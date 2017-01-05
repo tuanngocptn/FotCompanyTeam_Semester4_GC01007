@@ -103,16 +103,24 @@
                                         </s:if>
                                     </div>
                                 </div>
+
                             </s:form>
                         </div>
                     </s:if>
                     <s:else>
                         <div style="padding-top: 20px; padding-bottom: 40px" class="panel content-cus">
                             <s:form action="doUpdateOrder" method="POST" cssClass="form-horizontal">
-                                <div class="form-group">     
-                                    <s:label value="Mã Đơn:" cssClass="col-sm-4 control-label"/>
-                                    <div class="col-sm-7">
+                                <div class="form-group col-md-6" >
+                                    <s:label value="Mã CV - Mã CN:" cssClass="col-sm-7 col-sm-offset-2 control-label"/>
+                                </div>
+                                <div class="form-group col-md-3">     
+                                    <div class="col-sm-12">
                                         <s:textfield name="order.codeOrder" readonly="true" value="%{order.getCodeOrder()}" cssClass="form-control" required="required"/>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">     
+                                    <div class="col-sm-12">
+                                        <s:textfield name="order.codeCareer"  value="%{order.getCodeCareer()}" cssClass="form-control" required="required"/>
                                     </div>
                                 </div>
                                 <div class="form-group">     
@@ -138,12 +146,7 @@
                                         <s:textfield name="order.location"  value="%{order.getLocation()}" cssClass="form-control" required="required"/>
                                     </div>
                                 </div>
-                                <div class="form-group">     
-                                    <s:label value="Mã Công Việc:" cssClass="col-sm-4 control-label"/>
-                                    <div class="col-sm-7">
-                                        <s:textfield name="order.codeCareer"  value="%{order.getCodeCareer()}" cssClass="form-control" required="required"/>
-                                    </div>
-                                </div>
+
                                 <div class="form-group">     
                                     <s:label value="Tổng Công Nhân:" cssClass="col-sm-4 control-label"/>
                                     <div class="col-sm-7">
@@ -174,6 +177,12 @@
                                         <s:if test="%{order.getStatus() == 'wait'}">
                                             <s:textfield value="Chờ" name="nameCustomer" cssClass="form-control" readonly="true" required="required"/>
                                         </s:if>
+                                    </div>
+                                </div>
+                                <div class="form-group">     
+                                    <s:label value="Đơn Giá:" cssClass="col-sm-4 control-label"/>
+                                    <div class="col-sm-7">
+                                        <s:textfield name="order.priceOrder" type="number" value="%{order.getPriceOrder()}" cssClass="form-control" required="required"/>
                                     </div>
                                 </div>
                                 <s:submit value="Update" method="execute" cssClass="btn btn-warning col-md-2 col-md-offset-9"/>

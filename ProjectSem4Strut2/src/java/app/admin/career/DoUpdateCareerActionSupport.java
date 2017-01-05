@@ -16,7 +16,16 @@ public class DoUpdateCareerActionSupport extends ActionSupport {
 
     private String codeCareer;
     private String nameCareer;
+    private int priceCareer;
 
+    public int getPriceCareer() {
+        return priceCareer;
+    }
+
+    public void setPriceCareer(int priceCareer) {
+        this.priceCareer = priceCareer;
+    }
+    
     public String getCodeCareer() {
         return codeCareer;
     }
@@ -40,7 +49,7 @@ public class DoUpdateCareerActionSupport extends ActionSupport {
 
     public String execute() throws Exception {
         DataProcess dataProcess = new DataProcess();
-        if(dataProcess.updateCareer(codeCareer, nameCareer))
+        if(dataProcess.updateCareer(codeCareer, nameCareer, priceCareer))
             return "admin";
         addActionMessage("Bạn đã gặp phải lỗi gì đó rất củ chuối... Yêu cầu liên hệ tới Fọt Kăm Ba Lỳ để được giải đáp...");
         return "error";

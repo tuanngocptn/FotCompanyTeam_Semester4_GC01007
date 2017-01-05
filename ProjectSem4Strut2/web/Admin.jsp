@@ -23,7 +23,9 @@
             <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
             <link rel="stylesheet" type="text/css" href="css/css.css"/>
             <style type="text/css">
-
+                * > input{
+                    border-radius: 5px;
+                }
                 .paging-nav {
                     text-align: right;
                     padding-top: 2px;
@@ -50,6 +52,30 @@
                     /*width: 400px;*/
                     /*margin: 0 auto;*/
                     font-family: Arial, sans-serif;
+                }
+
+                .tooltipp {
+                    position: relative;
+                    display: inline-block;
+                    border-bottom: 1px dotted black;
+                }
+
+                .tooltipp .tooltipptext {
+                    visibility: hidden;
+                    width: 300px;
+                    background-color: black;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px 0;
+
+                    /* Position the tooltipp */
+                    position: absolute;
+                    z-index: 1;
+                }
+
+                .tooltipp:hover .tooltipptext {
+                    visibility: visible;
                 }
             </style>
         </head>
@@ -84,17 +110,20 @@
                                 <tr>
                                     <th>Mã Công Việc</th>
                                     <th>Tên Công Việc</th>
+                                    <th>Đơn giá (1người/1ngày)</th>
                                     <th colspan="2"></th>
                                 </tr>
                                 <tr>
                                     <td><s:textfield name="codeCareer" required="required"/> <br></td>
                                     <td><s:textfield name="nameCareer" required="required"/><br></td>
+                                    <td><s:textfield name="priceCareer" required="required"/><br></td>
                                     <td colspan="2"><s:submit method="execute" value="Thêm Công Việc" cssClass="btn btn-warning"/></td>
                                 </tr>
                                 <s:iterator var="career" value="lstCareer">
                                     <tr>
                                         <td><s:property value="#career.getCodeCareer()"/></td>
                                         <td><s:property value="#career.getNameCareer()"/></td>
+                                        <td><s:property value="#career.getPriceCareer()"/></td>
                                         <td><a href="updateCareer?code=<s:property value="#career.getCodeCareer()"/>">Sửa</a></td>
                                         <td><a href="deleteCareer?code=<s:property value="#career.getCodeCareer()"/>">Xoá</a></td>
                                     </tr>
@@ -105,9 +134,11 @@
 
                     <div id="home" class="tab-pane fade well in active" style="margin-top: 5px">
 
+
                         <s:if test="%{lstWorkerLeisrure != null}">
                             <s:form action="#" id="editForm" method="POST">
                                 <h4>Danh Sách Công Nhân Rảnh Rỗi</h4>
+
                                 <table class="table table-striped table-hover table-bordered table-condensed text-center">
                                     <tr>
                                         <th>Mã Công Nhân</th>
@@ -131,8 +162,15 @@
                                             <td><s:checkbox name="cbWorker%{#count}" id="%{#worker.getCodeWorker()}" onclick="tickCheckBoxActionListener(this.id, %{quantityWorker})"/></td>
                                         </tr>
                                         <s:set var="count" value="#count + 1"/>
-                                    </s:iterator>       
-                                    <td colspan="4"></td>
+                                    </s:iterator>    
+                                    <td><strong>Đơn Giá</strong></td>
+                                    <td colspan="2" >
+                                        <div class="tooltipp">Gợi ý:
+                                            <span class="tooltipptext">Tổng Số Công Nhân x Số Ngày x Đơn Giá</span>
+                                        </div>
+                                        <p onclick="suggest()" id="suggest" style="display: inline; cursor: pointer"><s:property value="lstWorkerLeisrure.get(0).getAvatar()"/></p>
+                                    </td>
+                                    <td><input name="txtPriceOrder" value="0" type="number"/></td>
                                     <td>       
                                         <s:submit cssClass="btn btn-warning col-sm-4 col-sm-offset-1" value="Sửa" method="execute" disabled="true" id="btnUpdateLstWorker" onclick="setUrlWorker(%{lstWorkerLeisrure.size()},%{codeOrder})"/>
                                         <a class="btn btn-warning col-sm-4 col-sm-offset-2" href="Admin.jsp">Đóng</a>
@@ -145,28 +183,28 @@
                             <tr style="color:green">
                                 <th>Stt</th>
                                 <th>Họ Tên</th>
-                                <th>Email Khách Hàng</th>
-                                <th>Số Điện Thoại</th>
+                                <th>Email</th>
+                                <th>Số ĐT</th>
                                 <th>Địa Điểm</th>
                                 <th>CV</th>
                                 <th>CN</th>
-                                <th>Ngày Bắt Đầu</th>
-                                <th>Ngày Kết Thúc</th>
+                                <th>Bắt Đầu</th>
+                                <th>Kết Thúc</th>
                                 <th colspan="2">Status</th>
-                                <th>Danh Sách CN</th>
-                                <th>Sửa - (Xoá)</th>
+                                <th>Giá</th>
+                                <th>Công Nhân</th>
+                                <th>Sửa-(Xoá)</th>
                             </tr>
                             <s:set var="i" value="1"/>
-
                             <s:iterator var="order" value="lstOrder">
                                 <s:if test="%{#order.codeOrder == #code}">
-                                    <tr style="color:blue ">
+                                    <tr style="color:blue" class="info">
                                     </s:if>
                                     <s:elseif test="%{#order.status == 'wait'}">
-                                    <tr style="color: red">
+                                    <tr style="color: red" class="danger">
                                     </s:elseif>
                                     <s:else>
-                                    <tr style="color:green ">
+                                    <tr style="color:green" class="success">
                                     </s:else>
                                     <td><s:property value="#i"/> </td>
                                     <s:set var="i" value="#i+1"/>
@@ -195,10 +233,12 @@
                                         <s:if test="%{#order.lstWorker.size() != 0 && #order.status == 'wait'}">
                                             <a href="setStatus?status=doing&codeOrder=<s:property value="#order.codeOrder"/>">Làm</a>
                                         </s:if>
-                                        <s:if test="%{#order.status == 'doing'}">
+                                        <s:set var="currentDate" value="%{new java.util.Date()}"/>
+                                        <s:if test="%{#order.status == 'doing'  && !(#currentDate.before(#order.endDate))}">
                                             <a href="setStatus?status=done&codeOrder=<s:property value="#order.codeOrder"/>">Xong</a>
                                         </s:if>
                                     </td>
+                                    <td><s:property value="#order.priceOrder"/></td>
                                     <td>
                                         <s:if test="%{#order.lstWorker.size() == 0}">
                                             <a href="editOrderLstWorker?codeCareer=<s:property value="#order.codeCareer"/>&startDate=<s:property value="#order.startDate"/>&endDate=<s:property value="#order.endDate"/>&quantityWorker=<s:property value="#order.quantityWorker"/>&codeOrder=<s:property value="#order.codeOrder"/>">Chưa Có</a>
@@ -232,8 +272,8 @@
                         <s:form action="addWorker"  method="POST"> 
                             <table id="tblWorker" class="table table-striped table-hover table-bordered table-condensed text-center" style="font-size: 13px">
                                 <tr>
-                                    <th>Mã Công Nhân</th>
-                                    <th>Mã Công Việc</th>
+                                    <th>Mã CN</th>
+                                    <th>Mã CV</th>
                                     <th>Tên Đăng Nhập</th>
                                     <th>Mật Khẩu</th>
                                     <th>Tên Đầy Đủ</th>
@@ -312,6 +352,10 @@
     </html>
 
     <script>
+        function suggest() {
+            console.log(document.getElementById("suggest").innerHTML);
+            document.getElementsByName("txtPriceOrder")[0].value = document.getElementById("suggest").innerHTML;
+        }
         function tickCheckBoxActionListener(str, size)
         {
             var sum = parseInt(document.getElementsByName("sum")[0].value);
@@ -334,7 +378,8 @@
                 if (boo)
                     str = str + document.getElementsByName("cbWorker" + i)[0].id + "+";
             }
-            document.getElementById("editForm").action = "doUpdateLstWorker?codeOrderDo=" + codeOrder + "&lstCbWorkerDo=" + str;
+            var priceOrder = document.getElementsByName("txtPriceOrder")[0].value;
+            document.getElementById("editForm").action = "doUpdateLstWorker?codeOrderDo=" + codeOrder + "&priceOrder=" + priceOrder + "&lstCbWorkerDo=" + str;
         }
     </script>
 

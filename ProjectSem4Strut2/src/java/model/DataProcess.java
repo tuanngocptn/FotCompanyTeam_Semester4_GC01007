@@ -79,7 +79,8 @@ public class DataProcess {
             while (rs.next()) {
                 String codeCareer = rs.getString(1);
                 String nameCareer = rs.getString(2);
-                lst.add(new Career(codeCareer, nameCareer));
+                int priceCareer = rs.getInt(3);
+                lst.add(new Career(codeCareer, nameCareer, priceCareer));
             }
             rs.close();
         } catch (SQLException ex) {
@@ -144,7 +145,8 @@ public class DataProcess {
                         lstWorker.add(this.getWorker(str));
                     });
                 }
-                Order od = new Order(codeOrder, nameCustomer, emailCustomer, phone, location, codeCareer, quantityWoker, startDate, endDate, status, lstWorker);
+                int priceOrder = rs.getInt(12);
+                Order od = new Order(codeOrder, nameCustomer, emailCustomer, phone, location, codeCareer, quantityWoker, startDate, endDate, status, lstWorker, priceOrder);
                 lst.add(od);
             }
             rs.close();
@@ -196,7 +198,8 @@ public class DataProcess {
                         lstWorker.add(this.getWorker(str));
                     });
                 }
-                Order od = new Order(codeOrder, nameCustomer, emailCustomer, phone, location, codeCareer, quantityWoker, startDate, endDate, status, lstWorker);
+                int priceOrder = rs.getInt(12);
+                Order od = new Order(codeOrder, nameCustomer, emailCustomer, phone, location, codeCareer, quantityWoker, startDate, endDate, status, lstWorker, priceOrder);
                 lst.add(od);
             }
             rs.close();
@@ -257,7 +260,7 @@ public class DataProcess {
     }
 
     public boolean addNewOrder(String nameCustomer, String emailCustomer, long phone, String location, String codeCareer, int quantityWorker, Date startDate, Date endDate, String status, List<Worker> lstWorker) {
-        String sql = "INSERT INTO TblOrder VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO TblOrder VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement prst;
         try {
             prst = getConnection().prepareCall(sql);
@@ -279,6 +282,7 @@ public class DataProcess {
                 }
             }
             prst.setString(10, strLstWorkers);
+            prst.setInt(11, 0);
             prst.execute();
             prst.close();
             return true;
@@ -289,7 +293,7 @@ public class DataProcess {
     }
 
     public boolean updateOrder(Order order) {
-        String sql = "UPDATE tblOrder SET _nameCustomer=?, _emailCustomer=?,_phoneCustomer=?,_location=?,_codeCareer=?,_quantityWoker=?,_startDate=?,_endDate=? WHERE _codeOrder=?";
+        String sql = "UPDATE tblOrder SET _nameCustomer=?, _emailCustomer=?,_phoneCustomer=?,_location=?,_codeCareer=?,_quantityWoker=?,_startDate=?,_endDate=?,_priceOrder=? WHERE _codeOrder=?";
         PreparedStatement prst;
         try {
             prst = getConnection().prepareCall(sql);
@@ -303,7 +307,8 @@ public class DataProcess {
             prst.setDate(7, sqlStartDate);
             java.sql.Date sqlEndDate = new java.sql.Date(order.getEndDate().getTime());
             prst.setDate(8, sqlEndDate);
-            prst.setInt(9, order.getCodeOrder());
+            prst.setInt(9, order.getPriceOrder());
+            prst.setInt(10, order.getCodeOrder());
             prst.execute();
             prst.close();
             return true;
@@ -313,13 +318,14 @@ public class DataProcess {
         }
     }
 
-    public boolean addCareer(String codeCareer, String nameCareer) {
-        String sql = "INSERT INTO tblCareer VALUES(?,?)";
+    public boolean addCareer(String codeCareer, String nameCareer, int priceCareer) {
+        String sql = "INSERT INTO tblCareer VALUES(?,?,?)";
         PreparedStatement prst;
         try {
             prst = getConnection().prepareCall(sql);
             prst.setString(1, codeCareer);
             prst.setString(2, nameCareer);
+            prst.setInt(3, priceCareer);
             prst.execute();
             prst.close();
             return true;
@@ -351,12 +357,12 @@ public class DataProcess {
 
     public Career getCareer(String code) {
         Career career = new Career();
-        String sql = "SELECT _nameCareer FROM TblCareer WHERE _codeCareer ='" + code + "'";
+        String sql = "SELECT _nameCareer,_priceCareer FROM TblCareer WHERE _codeCareer ='" + code + "'";
         ResultSet rs;
         try {
             rs = getConnection().createStatement().executeQuery(sql);
             while (rs.next()) {
-                career = new Career(code, rs.getString(1));
+                career = new Career(code, rs.getString(1), rs.getInt(2));
                 break;
             }
             rs.close();
@@ -367,8 +373,8 @@ public class DataProcess {
         return career;
     }
 
-    public boolean updateCareer(String codeCareer, String nameCareer) {
-        String sql = "UPDATE tblCareer SET _nameCareer = '" + nameCareer + "' WHERE _codeCareer = '" + codeCareer + "'";
+    public boolean updateCareer(String codeCareer, String nameCareer, int priceCareer) {
+        String sql = "UPDATE tblCareer SET _nameCareer = '" + nameCareer + "',_priceCareer=" + priceCareer + " WHERE _codeCareer = '" + codeCareer + "'";
         PreparedStatement prst;
         ResultSet rs;
         try {
@@ -494,6 +500,25 @@ public class DataProcess {
         return false;
     }
 
+    public boolean updateListWorkerOrderByAdmin(List<Worker> lstWorker, int codeOrder, String status, int priceOrder) {
+        String str = "";
+        System.out.println(lstWorker.size());
+        for (Worker worker : lstWorker) {
+            str = str + worker.getCodeWorker() + "#";
+        }
+        String sql = "UPDATE tblOrder SET _status = '" + status + "', _lstWorkers = '" + str + "',_priceOrder="+priceOrder+" WHERE _codeOrder=" + codeOrder;
+        PreparedStatement prst;
+        try {
+            prst = getConnection().prepareCall(sql);
+            prst.execute();
+            prst.close();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataProcess.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     public boolean updateListWorkerOrder(List<Worker> lstWorker, int codeOrder, String status) {
         String str = "";
         System.out.println(lstWorker.size());
@@ -583,6 +608,5 @@ public class DataProcess {
 
     public static void main(String[] args) {
         DataProcess dataProcess = new DataProcess();
-        System.out.println(dataProcess.getOrder().size());
     }
 }

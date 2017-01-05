@@ -81,7 +81,8 @@
                                         </s:if>
                                     </td>
                                     <td>
-                                        <s:if test="%{#order.status == 'doing'}">
+                                        <s:set var="currentDate" value="%{new java.util.Date()}"/>
+                                        <s:if test="%{#order.status == 'doing' && !(#currentDate.before(#order.endDate))}">
                                             <a href="workerSetStatus?codeOrder=<s:property value="#order.codeOrder"/>">Xong</a>
                                         </s:if>
                                     </td>

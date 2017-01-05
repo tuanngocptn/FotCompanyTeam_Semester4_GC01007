@@ -54,6 +54,7 @@
                                 <th>Status</th>
                                 <th>DSCN</th>
                                 <!--<th>Sửa DSCN</th>-->
+                                <th>Đơn Giá</th>
                                 <th>Xoá</th>
                             </tr>
                             <s:set var="i" value="0"/>
@@ -89,6 +90,7 @@
                                             <a href="editOrderLstWorkerCus?codeCareer=<s:property value="#order.codeCareer"/>&startDate=<s:property value="#order.startDate"/>&endDate=<s:property value="#order.endDate"/>&quantityWorker=<s:property value="#order.quantityWorker"/>&codeOrder=<s:property value="#order.codeOrder"/>&emailCustomer=<s:property value="#order.emailCustomer"/>">Chưa Có</a>
                                         </s:else>
                                     </td>
+                                    <td><s:property value="#order.priceOrder"/></td>
                                     <td>
                                         <s:if test="%{#order.status == 'wait'}">
                                             <a href="deleteOrderCus?codeOrder=<s:property value="#order.codeOrder"/>">Xoá</a>

@@ -6,6 +6,7 @@
 package app.admin.order;
 
 import com.opensymphony.xwork2.ActionSupport;
+import entity.Career;
 import entity.Worker;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,7 +21,7 @@ import model.DataProcess;
  * @author Panda
  */
 public class EditLstWorkerActionSupport extends ActionSupport {
-    
+
     private String codeOrder;
     private String codeCareer;
     private String startDate;
@@ -77,18 +78,22 @@ public class EditLstWorkerActionSupport extends ActionSupport {
         this.lstWorkerLeisrure = lstWorkerLeisrure;
     }
 
-    
-    
     public EditLstWorkerActionSupport() {
         lstWorkerLeisrure = new ArrayList<>();
     }
-    
+
     public String execute() throws Exception {
         DataProcess dataProcess = new DataProcess();
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         lstWorkerLeisrure = dataProcess.getWorkerLeisrure(codeCareer, format.parse(startDate), format.parse(endDate));
         lstWorkerLeisrure.get(0).setPass(this.codeOrder);
+        Career career = dataProcess.getCareer(codeCareer);
+        long price = quantityWorker * career.getPriceCareer() * this.minus(format.parse(startDate), format.parse(endDate));
+        lstWorkerLeisrure.get(0).setAvatar(Long.toString(price));
         return "admin";
     }
-    
+
+    private long minus(Date startDate, Date endDate) {
+        return (endDate.getTime() - startDate.getTime())/(1000 * 60 * 60 * 24) + 1;
+    }
 }

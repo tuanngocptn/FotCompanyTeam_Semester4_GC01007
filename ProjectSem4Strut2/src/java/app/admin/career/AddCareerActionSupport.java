@@ -20,6 +20,7 @@ public class AddCareerActionSupport extends ActionSupport {
 
     private String codeCareer;
     private String nameCareer;
+    private int priceCareer;
     private DataProcess dataProcess;
 
     public String getCodeCareer() {
@@ -38,12 +39,24 @@ public class AddCareerActionSupport extends ActionSupport {
         this.nameCareer = nameCareer;
     }
 
+    public int getPriceCareer() {
+        return priceCareer;
+    }
+
+    public void setPriceCareer(int priceCareer) {
+        this.priceCareer = priceCareer;
+    }
+    
+    
+
     public AddCareerActionSupport() {
         dataProcess = new DataProcess();
     }
 
+    
+    
     public String execute() throws Exception {
-        if (dataProcess.addCareer(codeCareer, nameCareer)) {
+        if (dataProcess.addCareer(codeCareer, nameCareer,priceCareer)) {
             return "admin";
         }
         addActionMessage("Tên hoặc Mã công việc đã tồn tại!");

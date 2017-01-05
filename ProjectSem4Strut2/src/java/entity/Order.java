@@ -24,11 +24,12 @@ public class Order {
     private Date endDate;
     private String status;
     private List<Worker> lstWorker;
+    private int priceOrder;
 
     public Order() {
     }
 
-    public Order(int codeOrder, String nameCustomer, String emailCustomer, long phone, String location, String codeCareer, int quantityWorker, Date startDate, Date endDate, String status, List<Worker> lstWorker) {
+    public Order(int codeOrder, String nameCustomer, String emailCustomer, long phone, String location, String codeCareer, int quantityWorker, Date startDate, Date endDate, String status, List<Worker> lstWorker, int priceOrder) {
         this.codeOrder = codeOrder;
         this.nameCustomer = nameCustomer;
         this.emailCustomer = emailCustomer;
@@ -40,6 +41,7 @@ public class Order {
         this.endDate = endDate;
         this.status = status;
         this.lstWorker = lstWorker;
+        this.priceOrder = priceOrder;
     }
 
     public int getCodeOrder() {
@@ -130,8 +132,19 @@ public class Order {
         this.lstWorker = lstWorker;
     }
 
+    public int getPriceOrder() {
+        return priceOrder;
+    }
+
+    public void setPriceOrder(int priceOrder) {
+        this.priceOrder = priceOrder;
+    }
+
+    
+    
     @Override
     public String toString() {
-        return "Order{" + "codeOrder=" + codeOrder + ", nameCustomer=" + nameCustomer + ", emailCustomer=" + emailCustomer + ", phone=" + phone + ", location=" + location + ", codeCareer=" + codeCareer + ", quantityWorker=" + quantityWorker + ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + ", lstWorker=" + lstWorker + '}';
+        return "Order{" + "codeOrder=" + codeOrder + ", nameCustomer=" + nameCustomer + ", emailCustomer=" + emailCustomer + ", phone=" + phone + ", location=" + location + ", codeCareer=" + codeCareer + ", quantityWorker=" + quantityWorker + ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + ", lstWorker=" + lstWorker + ", priceOrder=" + priceOrder + '}';
     }
+
 }

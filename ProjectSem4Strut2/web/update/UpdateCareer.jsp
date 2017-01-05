@@ -49,6 +49,13 @@
                                 </div>
                             </div>
                             <div class="form-group col-md-7 col-md-offset-2" >
+                                <s:label value="Đơn giá (1người/1ngày)"  cssClass="control-label col-sm-4"/>
+                                <div class="col-sm-8">
+                                    <s:textfield cssClass="form-control"  name="priceCareer" value="%{career.getPriceCareer()}" required="required"/><br>
+
+                                </div>
+                            </div>
+                            <div class="form-group col-md-7 col-md-offset-2" >
                                 <s:submit cssClass="btn btn-warning col-md-offset-8" method="execute" value="Cập Nhật Thay Đổi"/>
                             </div>
                         </s:form>

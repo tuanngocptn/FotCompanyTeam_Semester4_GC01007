@@ -10,15 +10,18 @@ package entity;
  * @author Panda
  */
 public class Career {
+
     private String codeCareer;
     private String nameCareer;
+    private int priceCareer;
 
     public Career() {
     }
 
-    public Career(String codeCareer, String nameCareer) {
+    public Career(String codeCareer, String nameCareer, int priceCareer) {
         this.codeCareer = codeCareer;
         this.nameCareer = nameCareer;
+        this.priceCareer = priceCareer;
     }
 
     public String getCodeCareer() {
@@ -36,6 +39,13 @@ public class Career {
     public void setNameCareer(String nameCareer) {
         this.nameCareer = nameCareer;
     }
-    
-    
+
+    public int getPriceCareer() {
+        return priceCareer;
+    }
+
+    public void setPriceCareer(int priceCareer) {
+        this.priceCareer = priceCareer;
+    }
+
 }
