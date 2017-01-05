@@ -85,6 +85,7 @@
                                         <p></p>
                                         <a href="#checkHangg" class="btn btn-warning showCheckHang col-sm-4 col-sm-offset-1 ">Check Hàng</a>
                                         <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-2">Đặt Gạch</a>
+                                        <a href="/ProjectSem4Strut2/ListCareer.jsp" class="btn btn-warning showDatGach col-sm-10 col-sm-offset-1" style="margin-top: 15px;">Danh Sách Dịch Vụ</a>
                                     </div>
                                 </div>
                             </div>
