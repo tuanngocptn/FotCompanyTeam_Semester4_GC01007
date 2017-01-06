@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
-<s:if test="%{lstCareer == null}">
+<s:if test="%{lstCareer == null || lstCareerJson == null}">
     <s:action name="getLstCareer" executeResult="true" />
 </s:if>
 <s:else>
@@ -105,9 +105,10 @@
 
 
                     <div class="back-second container" style="height: 580px">
+                        <s:set var="careerJson" value="%{lstCareerJson.get(0)}"/>
                         <div style="height: 290px" class="col-md-12">
                             <div style="padding: 20px" class="col-md-6" >
-                                <div class="img_hover1" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(images/design-and-build-services.jpg)">
+                                <div class="img_hover1" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(<s:property value="#careerJson.getImage()"/>)">
                                     <div class="img_congViec1">
                                         <div class="show_in1">
                                             <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Gạch</a>
@@ -117,16 +118,16 @@
                             </div>
 
                             <div style="padding: 20px" class="text-center col-md-6">
-                                <h2 class="font-helveticaneue">Xây Dựng Bền Đẹp</h2>
-                                <h4 class="font-helveticaneue">Không đẹp không bền không lấy tiền!</h4>
-                                <p>Chúng tôi tự hào là nhà thầu xây dựng khủng khiếp nhất vịnh bắc bộ.<br> Cho tới bây giờ vẫn chưa có nhà thầu nào khủng khiếp bằng.<br>Nếu bạn tìm được nhà thầu nào khủng khiếp hơn chúng tôi.<br>Chúng tôi sẵn sàng đứng thứ 2 cho nhà thầu đó khủng khiếp nhất...</p>
-                                <p style="padding-left: 15em">- Ngọc Lọc Cọc -</p>
+                                <h2 class="font-helveticaneue"><s:property value="#careerJson.getName()"/></h2>
+                                <h4 class="font-helveticaneue"><s:property value="#careerJson.getSlogan()"/></h4>
+                                <p><s:property value="#careerJson.getSortText()"/></p>
                             </div>
                         </div>
 
                         <div style="height: 290px" class="col-md-12">
+                            <s:set var="careerJson" value="%{lstCareerJson.get(1)}"/>
                             <div style="padding: 20px" class="col-md-6" >
-                                <div class="img_hover2" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(images/hbp.jpg)">
+                                <div class="img_hover2" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(<s:property value="#careerJson.getImage()"/>)">
                                     <div class="img_congViec2">
                                         <div class="show_in2">
                                             <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Gạch</a>
@@ -135,10 +136,9 @@
                                 </div>
                             </div>
                             <div style="padding: 20px" class="text-center col-md-6">
-                                <h2 class="font-helveticaneue">Hút - Thông Tắc Bể Phốt</h2>
-                                <h4 class="font-helveticaneue">Duy nhất hút bằng miệng cực kì chuyên nghiệp!</h4>
-                                <p>Bạn lỡ dính phốt. Dù phốt có nặng tới đâu.<br> Chúng tôi tự tin rằng sẽ giúp bạn bóc bay phốt.<br>Duy nhất chỉ có chung tôi mới làm được việc đó.<br>Đừng mong tìm được chỗ tốt hơn chúng tôi.</p>
-                                <p style="padding-left: 15em">- Phong Đỗ -</p>
+                                <h2 class="font-helveticaneue"><s:property value="#careerJson.getName()"/></h2>
+                                <h4 class="font-helveticaneue"><s:property value="#careerJson.getSlogan()"/></h4>
+                                <p><s:property value="#careerJson.getSortText()"/></p>
                             </div>
                         </div>
                     </div>
@@ -158,14 +158,14 @@
                     </div>
                     <div class="back-second container" style="height: 580px">
                         <div style="height: 290px" class="col-md-12">
-                            <div style="padding: 20px" class="text-center col-md-6" >
-                                <h2 class="font-helveticaneue">Bốc Mộ Cấp Tốc!</h2>
-                                <h4 class="font-helveticaneue">Thi hài còn nguyên, đào lên lại chôn xuống!</h4>
-                                <p>Đa số người Việt đều quan niệm rằng: <br> chuyện mồ mả là việc hệ trọng, không thể đại khái, qua loa...<br>Nhưng chúng tôi nghĩ khác và làm khác...<br>Quan trọng là nhanh và chất lượng. <br> Còn để lâu các cụ ám cho có mà mạt vận.</p>
-                                <p style="padding-left: 15em">- Nguyễn Hoàng Hải -</p>
+                            <s:set var="careerJson" value="%{lstCareerJson.get(2)}"/>
+                            <div style="padding: 20px" class="text-center col-md-6">
+                                <h2 class="font-helveticaneue"><s:property value="#careerJson.getName()"/></h2>
+                                <h4 class="font-helveticaneue"><s:property value="#careerJson.getSlogan()"/></h4>
+                                <p><s:property value="#careerJson.getSortText()"/></p>
                             </div>
                             <div style="padding: 20px" class="col-md-6" >
-                                <div class="img_hover3" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(images/bm.jpg)">
+                                <div class="img_hover3" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(<s:property value="#careerJson.getImage()"/>)">
                                     <div class="img_congViec3">
                                         <div class="show_in3">
                                             <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Gạch</a>
@@ -175,14 +175,14 @@
                             </div>
                         </div>
                         <div style="height: 290px" class="col-md-12">
-                            <div style="padding: 20px" class="text-center col-md-6" >
-                                <h2 class="font-helveticaneue">Khoan Cắt Bê Tông</h2>
-                                <h4 class="font-helveticaneue">Khoan là thủng, Đục là nát!</h4>
-                                <p>Khoan mà nghĩ hỡi đời người thợ<br>Cắt, đục, mài, đã đủ lo toan?<br>Bê máy lên, đục liên hoàn<br>Tông lên tông xuống, Là Toàn thợ khoan.</p>
-                                <p style="padding-left: 15em">- Phùng Toàn -</p>
+                            <s:set var="careerJson" value="%{lstCareerJson.get(3)}"/>
+                            <div style="padding: 20px" class="text-center col-md-6">
+                                <h2 class="font-helveticaneue"><s:property value="#careerJson.getName()"/></h2>
+                                <h4 class="font-helveticaneue"><s:property value="#careerJson.getSlogan()"/></h4>
+                                <p><s:property value="#careerJson.getSortText()"/></p>
                             </div>
                             <div style="padding: 20px" class="col-md-6" >
-                                <div class="img_hover4" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(images/kcbt2.jpg)">
+                                <div class="img_hover4" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(<s:property value="#careerJson.getImage()"/>)">
                                     <div class="img_congViec4">
                                         <div class="show_in4">
                                             <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Gạch</a>

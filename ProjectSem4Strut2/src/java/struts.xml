@@ -29,6 +29,10 @@
             <result name="index">index.jsp</result>
         </action>
         
+        <action name="getLstCareerJson" class="app.CareerJsonActionSupport">
+            <result name="listCareer">ListCareer.jsp</result>
+        </action>
+        
         <action name="addOrder" class="app.OrderActionSupport">
             <result name="index">index.jsp</result>
             <result name="error">other/Error.jsp</result>
@@ -158,6 +162,10 @@
             <result name="index">index.jsp</result>
             <result name="error">other/Error.jsp</result>
         </action>
+        
+        <action name="viewCareer" class="app.ViewCareerJsonSupport">
+            <result name="viewCareer">ViewCareer.jsp</result>
+        </action>
                
         <action name="doUploadImg" class="app.worker.DoUploadImgActionSupport">
             <interceptor-ref name="fileUpload">
@@ -168,6 +176,18 @@
             </interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>
             <result name="index">index.jsp</result>
+            <result name="error">other/Error.jsp</result>
+        </action>
+        
+        <action name="doUploadImgCareerJson" class="app.admin.career.DoUploadImgCareerActionSupport">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <result name="admin">Admin.jsp</result>
             <result name="error">other/Error.jsp</result>
         </action>
     </package>

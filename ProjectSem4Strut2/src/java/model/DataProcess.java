@@ -374,7 +374,7 @@ public class DataProcess {
     }
 
     public boolean updateCareer(String codeCareer, String nameCareer, int priceCareer) {
-        String sql = "UPDATE tblCareer SET _nameCareer = '" + nameCareer + "',_priceCareer=" + priceCareer + " WHERE _codeCareer = '" + codeCareer + "'";
+        String sql = "UPDATE tblCareer SET _nameCareer = N'" + nameCareer + "',_priceCareer=" + priceCareer + " WHERE _codeCareer = '" + codeCareer + "'";
         PreparedStatement prst;
         ResultSet rs;
         try {

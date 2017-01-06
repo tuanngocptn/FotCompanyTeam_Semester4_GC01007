@@ -8,7 +8,7 @@ GO
 CREATE TABLE tblCareer
 (
 	_codeCareer VARCHAR(20) NOT NULL PRIMARY KEY,
-	_nameCareer NVARCHAR(20) NOT NULL UNIQUE,
+	_nameCareer NVARCHAR(50) NOT NULL UNIQUE,
 	_priceCareer int DEFAULT 0
 )
 
