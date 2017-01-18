@@ -56,9 +56,9 @@
 
                                 <div style="padding: 20px" class="text-center col-md-6">
                                     <h2 class="font-helveticaneue"><s:property value="#careerJson.name"/></h2>
-                                    <h4 class="font-helveticaneue"><s:property value="#careerJson.slogan"/></h4>
-                                    <p><s:property value="#careerJson.sortText"/></p>
-                                    <p>Giá 1 thợ / 1 ngày <s:property value="#careerJson.price"/></p>
+                                    <em style="font-size: 22px" class="font-helveticaneue"><s:property value="#careerJson.slogan"/></em>
+                                    <p align="justify"><s:property value="#careerJson.sortText"/></p>
+                                    <p style="font-size: 25px">Giá 1 thợ/ngày: <s:property value="#careerJson.price"/> VNĐ</p>
                                 </div>
                             </div>
                         </a>

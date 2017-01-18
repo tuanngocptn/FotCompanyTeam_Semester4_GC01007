@@ -11,7 +11,6 @@ import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
@@ -23,8 +22,8 @@ public class Mail {
     private final String subject;
     private final String content;
     private final String toEmail;
-    final String username = "phuongthengocbiix@gmail.com";
-    final String password = "Us8cijh1";
+    final String username = "photcompany@gmail.com";
+    final String password = "A123@123";
 
     private void sent() {
         Properties props = new Properties();

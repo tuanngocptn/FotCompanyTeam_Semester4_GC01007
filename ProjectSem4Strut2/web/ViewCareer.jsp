@@ -50,13 +50,13 @@
                         </div>
                         <div style="padding: 20px" class="text-center col-md-6">
                             <h2 class="font-helveticaneue"><s:property value="%{careerForJson.getName()}"/></h2>
-                            <h4 class="font-helveticaneue"><s:property value="%{careerForJson.getSlogan()}"/></h4>
-                            <p><s:property value="%{careerForJson.getSortText()}"/></p>
-                            <p>Giá 1 thợ / 1 ngày <s:property value="%{careerForJson.getPrice()}"/></p>
+                            <strong class="font-helveticaneue"><s:property value="%{careerForJson.getSlogan()}"/></strong>
+                            <p align="justify"><s:property value="%{careerForJson.getSortText()}"/></p>
+                            <strong style="font-size: 25px">Giá 1 thợ / 1 ngày : <s:property value="%{careerForJson.getPrice()}"/> VNĐ</strong>
                         </div>
                     </div>
-                    <div style="padding: 20px" class="text-center col-md-12">
-                        <p><s:property value="%{careerForJson.getLongText()}"/></p>
+                    <div style="padding: 20px"  class="text-center col-md-12">
+                        <p align="justify" style="font-size: 16px  "><s:property value="%{careerForJson.getLongText()}"/></p>
                     </div>
                 </div>
             </div>

@@ -123,7 +123,7 @@ public class DataProcess {
 
     public List<Order> getOrder() {
         List<Order> lst = new ArrayList<>();
-        String sql = "SELECT * FROM tblOrder";
+        String sql = "SELECT * FROM tblOrder ORDER BY _startDate ASC";
         ResultSet rs;
         try {
             rs = getConnection().createStatement().executeQuery(sql);

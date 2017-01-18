@@ -10,6 +10,7 @@ import controller.CareerJson;
 import entity.Career;
 import entity.CareerForJson;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import model.DataProcess;
 
@@ -30,9 +31,21 @@ public class CareerJsonActionSupport extends ActionSupport {
         lstCareer = new ArrayList<>();
         dataProcess = new DataProcess();
     }
+
     public String execute() throws Exception {
         lstCareer = dataProcess.getCareer();
-        lstCareerJson = careerJson.read();
+        List<CareerForJson> lstCareerForJson = careerJson.read();
+
+        lstCareerJson = new ArrayList<>();
+        
+        for(CareerForJson careerForJson : lstCareerForJson){
+            for(Career career : lstCareer){
+                if(careerForJson.getCode().equals(career.getCodeCareer())){
+                    lstCareerJson.add(careerForJson);
+                }
+            }
+        }
+        
         for (Career career : lstCareer) {
             boolean boo = true;
             for (CareerForJson careerForJson : lstCareerJson) {
@@ -44,9 +57,6 @@ public class CareerJsonActionSupport extends ActionSupport {
             if (boo) {
                 lstCareerJson.add(new CareerForJson(career.getCodeCareer(), career.getNameCareer(), "chưa có slogan", Long.valueOf(career.getPriceCareer()), "images/career/kcbt2.jpg", "chưa có lời giới thiệu ngắn", "Chưa có lời giới thiệu dài", "0"));
             }
-        }
-        for (CareerForJson careerForJson : lstCareerJson) {
-            System.out.println(careerForJson.getSlogan());
         }
         return "listCareer";
     }
@@ -71,9 +81,6 @@ public class CareerJsonActionSupport extends ActionSupport {
         List<CareerForJson> lstCareerJson = new ArrayList<>();
         CareerJson careerJson = new CareerJson();
         lstCareerJson = careerJson.read();
-        lstCareerJson.forEach((careerForJson) -> {
-            System.out.println(careerForJson);
-        });
     }
 
     public static void main(String[] args) {

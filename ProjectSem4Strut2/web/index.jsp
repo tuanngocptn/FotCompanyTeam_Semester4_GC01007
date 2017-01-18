@@ -72,19 +72,19 @@
                                     <p id="logo"><strong>FOTCOMPANY</strong><p>
                                     <ul class="col-md-8">
                                         <a href="index.jsp"><li class="col-md-2 col-md-offset-4 text-center " >Trang Chủ</li></a>
-                                        <a href="#checkHangg"><li class="col-md-2 text-center showCheckHang" >Check Hàng</li></a>
-                                        <a href="#datGach"><li class="col-md-2 text-center showDatGach" >Đặt Gạch</li></a>
+                                        <a href="#checkHangg"><li class="col-md-2 text-center showCheckHang" >Đơn Hàng</li></a>
+                                        <a href="#datGach"><li class="col-md-2 text-center showDatGach" >Đặt Hàng</li></a>
                                         <a href="#dangNhap"><li class="col-md-2 text-center showDangNhap" >Đăng Nhập</li></a>
                                     </ul>
                                 </div>
 
                                 <div  class="" id="banner-top">
                                     <div id="banner-top-top" class="container text-center">
-                                        <h1 class="h1-text">Fọt Căm Pà Ly</h1>
+                                        <h1 class="h1-text">Fọt Company</h1>
                                         <h3 class="h3-text">Mọi Lúc - Mọi Nơi</h3>
                                         <p></p>
-                                        <a href="#checkHangg" class="btn btn-warning showCheckHang col-sm-4 col-sm-offset-1 ">Check Hàng</a>
-                                        <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-2">Đặt Gạch</a>
+                                        <a href="#checkHangg" class="btn btn-warning showCheckHang col-sm-4 col-sm-offset-1 ">Đơn Hàng</a>
+                                        <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-2">Đặt Hàng</a>
                                         <a href="/ProjectSem4Strut2/ListCareer.jsp" class="btn btn-warning showDatGach col-sm-10 col-sm-offset-1" style="margin-top: 15px;">Danh Sách Dịch Vụ</a>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
                                 <div class="col-md-8">
                                     <s:textfield cssClass="form-control" name="emailCustomer" type="email" placeholder="Email" required="required"/>
                                 </div>
-                                <s:submit value="Check Hàng" method="execute" cssClass="col-md-3 col-md-offset-1 btn btn-warning"/>
+                                <s:submit value="Đơn Hàng" method="execute" cssClass="col-md-3 col-md-offset-1 btn btn-warning"/>
                             </s:form>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                                 <div class="img_hover1" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(<s:property value="#careerJson.getImage()"/>)">
                                     <div class="img_congViec1">
                                         <div class="show_in1">
-                                            <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Gạch</a>
+                                            <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Hàng</a>
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                                 <div class="img_hover2" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(<s:property value="#careerJson.getImage()"/>)">
                                     <div class="img_congViec2">
                                         <div class="show_in2">
-                                            <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Gạch</a>
+                                            <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Hàng</a>
                                         </div>
                                     </div>
                                 </div>
@@ -168,7 +168,7 @@
                                 <div class="img_hover3" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(<s:property value="#careerJson.getImage()"/>)">
                                     <div class="img_congViec3">
                                         <div class="show_in3">
-                                            <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Gạch</a>
+                                            <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Hàng</a>
                                         </div>
                                     </div>
                                 </div>
@@ -185,7 +185,7 @@
                                 <div class="img_hover4" style="height: 250px; width: 481px;border-radius: 5px; background-image:url(<s:property value="#careerJson.getImage()"/>)">
                                     <div class="img_congViec4">
                                         <div class="show_in4">
-                                            <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Gạch</a>
+                                            <a href="#datGach" class="btn btn-warning showDatGach col-sm-4 col-sm-offset-4">Đặt Hàng</a>
                                         </div>
                                     </div>
                                 </div>
@@ -195,59 +195,59 @@
                     </div>
                     <div class="container content" id="datGach">
                         <div  class="container" style=""> 
-                            <h2 class="text-center h2-text" style="color: white; margin-top: 40px; margin-bottom: 30px">Đặt Gạch Ngay</h2>
+                            <h2 class="text-center h2-text" style="color: white; margin-top: 40px; margin-bottom: 30px">Đặt Hàng Ngay</h2>
                             <div class="col-md-5 col-md-offset-3" style="margin-top: 20px">
                                 <s:form action="addOrder" method="POST" name="addOrderForm" id="addOrderForm" cssClass="form-horizontal">
                                     <div class="form-group">     
-                                        <s:label value="Tên Đầy Đủ:" cssClass="col-sm-4 control-label"/>
-                                        <div class="col-sm-8">
+                                        <s:label value="Tên Đầy Đủ:" cssClass="col-sm-5 control-label"/>
+                                        <div class="col-sm-7">
                                             <s:textfield name="nameCustomer" cssClass="form-control" required="required"/>
                                         </div>
                                     </div>
                                     <div class="form-group">   
-                                        <s:label value="Email:" cssClass="col-sm-4 control-label"/>
-                                        <div class="col-sm-8">
+                                        <s:label value="Email:" cssClass="col-sm-5 control-label"/>
+                                        <div class="col-sm-7">
                                             <s:textfield name="emailCustomer" type="email" cssClass="form-control" required="required"/>
                                         </div>
                                     </div>
                                     <div class="form-group">    
-                                        <s:label value="Số Điện Thoại:" cssClass="col-sm-4 control-label"/>
-                                        <div class="col-sm-8">
+                                        <s:label value="Số Điện Thoại:" cssClass="col-sm-5 control-label"/>
+                                        <div class="col-sm-7">
                                             <s:textfield name="phone" type="number"  cssClass="form-control" required="required"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group"> 
-                                        <s:label value="Địa Điểm:" cssClass="col-sm-4 control-label"/>
-                                        <div class="col-sm-8">
+                                        <s:label value="Địa Điểm:" cssClass="col-sm-5 control-label"/>
+                                        <div class="col-sm-7">
                                             <s:textfield name="location" placeholder="" cssClass="form-control" required="required"/>
                                         </div>
                                     </div>
                                     <div class="form-group">    
-                                        <s:label value="Công Việc Yêu Cầu:" cssClass="col-sm-4 control-label"/>
-                                        <div class="col-sm-8">
+                                        <s:label value="Công Việc Yêu Cầu:" cssClass="col-sm-5 control-label"/>
+                                        <div class="col-sm-7">
                                             <s:select headerKey="-1" cssClass="form-control" headerValue="--Chọn--" list="lstCareer" listKey="codeCareer" listValue="nameCareer" name="codeCareer"/>
                                         </div>
                                     </div>
                                     <div class="form-group" >         
-                                        <s:label value="Số Lượng Công Nhân:" cssClass="col-sm-4 control-label"/>
-                                        <div class="col-sm-8">  
+                                        <s:label value="Số Lượng Công Nhân:" cssClass="col-sm-5 control-label"/>
+                                        <div class="col-sm-7">  
                                             <s:textfield name="quantityWorker" type="number" placeholder="" cssClass="form-control" required="required"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <s:label value="Ngày Bắt Đầu:" cssClass="col-sm-4 control-label"/>
-                                        <div class="col-sm-8">
+                                        <s:label value="Ngày Bắt Đầu:" cssClass="col-sm-5 control-label"/>
+                                        <div class="col-sm-7">
                                             <s:textfield name="startDate" type="date" cssClass="form-control" required="required" onchange="IsEmpty()"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <s:label value="Ngày Kết Thúc:" cssClass="col-sm-4 control-label"/>
-                                        <div class="col-sm-8">
+                                        <s:label value="Ngày Kết Thúc:" cssClass="col-sm-5 control-label"/>
+                                        <div class="col-sm-7">
                                             <s:textfield name="endDate" type="date" cssClass="form-control" required="required" onchange="IsEmpty()"/>
                                         </div>
                                     </div>
-                                    <s:submit method="execute" id="btnDatGach" value="Quất" cssClass="btn btn-warning col-sm-4 col-sm-offset-8"/>
+                                    <s:submit method="execute" id="btnDatGach" value="Đặt Hàng" cssClass="btn btn-warning col-sm-4 col-sm-offset-8"/>
                                 </s:form>
                             </div>
                         </div>
@@ -256,8 +256,8 @@
                         <p id="logo"><strong>FOTCOMPANY</strong><p>
                         <ul class="col-md-8">
                             <a href="index.jsp"><li class="col-md-2 col-md-offset-4 text-center " >Trang Chủ</li></a>
-                            <a href="#checkHangg"><li class="col-md-2 text-center showCheckHang" >Check Hàng</li></a>
-                            <a href="#datGach"><li class="col-md-2 text-center showDatGach" >Đặt Gạch</li></a>
+                            <a href="#checkHangg"><li class="col-md-2 text-center showCheckHang" >Đơn Hàng</li></a>
+                            <a href="#datGach"><li class="col-md-2 text-center showDatGach" >Đặt Hàng</li></a>
                             <a href="#dangNhap"><li class="col-md-2 text-center showDangNhap" >Đăng Nhập</li></a>
                         </ul>
                     </div>
